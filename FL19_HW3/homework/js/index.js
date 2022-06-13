@@ -20,6 +20,43 @@ class Game{
     initialise(context) {
         context.firstInit();
         context.generateList(this.charactersArray);
+        
+        let myPlayer, enemyPlayer;
+
+        context.startBtn.addEventListener('click', () => {
+            alert('Choose your fighter');
+            context.startBtn.classList.add('hidden');
+            context.fightBtn.classList.add('hidden');
+            context.character_list.classList.remove('hidden');
+
+            context.character_list.childNodes.forEach((wrapper, i) => {
+                wrapper.addEventListener('click', () => {
+                    let flag = true;
+                    const myPlayerId = i;
+                    myPlayer = this.charactersArray[myPlayerId];
+                    wrapper.classList.add('selected');
+
+                    while(flag) {
+                        const enemyPlayerId = Math.floor(Math.random() * context.character_list.childNodes.length);
+                        if(enemyPlayerId !== myPlayerId) {
+                                context.character_list.childNodes[enemyPlayerId].classList.add('selected');
+                                context.battle_field.append(context.character_list.childNodes[myPlayerId],
+                                    context.fightBtn,context.character_list.childNodes[enemyPlayerId]);
+                                context.fightBtn.classList.remove('hidden');
+                                context.character_list.childNodes.forEach((item) => {
+                                item.classList.add('hidden');
+                                flag = false;
+                                enemyPlayer = this.charactersArray[enemyPlayerId];
+                            });
+                        }
+                    }
+                });
+            });
+        });
+        context.fightBtn.addEventListener('click', () => {
+            context.fightBtn.setAttribute('disabled', true);
+            this.fight(context,myPlayer,enemyPlayer);
+        });
     }
 
     fight(context,myPlayer, enemyPlayer) {
@@ -80,42 +117,7 @@ class Display {
     initialise() {
         const game = new Game();
         game.initialise(this);
-        let myPlayer, enemyPlayer;
 
-        this.startBtn.addEventListener('click', () => {
-            alert('Choose your fighter');
-            this.startBtn.classList.add('hidden');
-            this.fightBtn.classList.add('hidden');
-            this.character_list.classList.remove('hidden');
-
-            this.character_list.childNodes.forEach((wrapper, i) => {
-                wrapper.addEventListener('click', () => {
-                    let flag = true;
-                    const myPlayerId = i;
-                    myPlayer = game.charactersArray[myPlayerId];
-                    wrapper.classList.add('selected');
-
-                    while(flag) {
-                        const enemyPlayerId = Math.floor(Math.random() * this.character_list.childNodes.length);
-                        if(enemyPlayerId !== myPlayerId) {
-                                this.character_list.childNodes[enemyPlayerId].classList.add('selected');
-                                this.battle_field.append(this.character_list.childNodes[myPlayerId],this.fightBtn,
-                                     this.character_list.childNodes[enemyPlayerId]);
-                                this.fightBtn.classList.remove('hidden');
-                                this.character_list.childNodes.forEach((item) => {
-                                item.classList.add('hidden');
-                                flag = false;
-                                enemyPlayer = game.charactersArray[enemyPlayerId];
-                            });
-                        }
-                    }
-                });
-            });
-        });
-        this.fightBtn.addEventListener('click', () => {
-            this.fightBtn.setAttribute('disabled', true);
-            game.fight(this,myPlayer,enemyPlayer);
-        });
     }
 
     firstInit() {
