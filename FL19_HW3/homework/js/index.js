@@ -31,12 +31,12 @@ class Game{
 
             context.character_list.childNodes.forEach((wrapper, i) => {
                 wrapper.addEventListener('click', () => {
-                    let flag = true;
+                    let isEnemyChosen = false;
                     const myPlayerId = i;
                     myPlayer = this.charactersArray[myPlayerId];
                     wrapper.classList.add('selected');
 
-                    while(flag) {
+                    while(!isEnemyChosen) {
                         const enemyPlayerId = Math.floor(Math.random() * context.character_list.childNodes.length);
                         if(enemyPlayerId !== myPlayerId) {
                                 context.character_list.childNodes[enemyPlayerId].classList.add('selected');
@@ -45,7 +45,7 @@ class Game{
                                 context.fightBtn.classList.remove('hidden');
                                 context.character_list.childNodes.forEach((item) => {
                                 item.classList.add('hidden');
-                                flag = false;
+                                isEnemyChosen = true;
                                 enemyPlayer = this.charactersArray[enemyPlayerId];
                             });
                         }

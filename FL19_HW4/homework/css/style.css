@@ -1,0 +1,151 @@
+*, 
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: sans-serif;
+    background-color: rgb(238, 238, 238);
+}
+
+button {
+    cursor: pointer;
+}
+
+.header__title {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 3em;
+    color: rgb(97, 97, 97);
+}
+
+.buttons {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.load-by-js, 
+.load-by-fetch {
+    color: #fff;
+    background-color: #745cff;
+    box-shadow: 4px 4px 4px 0px rgba(34, 60, 80, 0.2);
+    border-radius: 3px;
+    width: 150px;
+    height: 35px;
+    border: none;
+    font-size: 1.2em;
+    margin: 0 15px;
+}
+
+.load-by-js:hover, 
+.load-by-fetch:hover {
+    background-color: #745cff;
+    box-shadow: 4px 4px 4px 0px rgba(34, 60, 80, 0.2) inset;
+}
+
+.output {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.js-output, 
+.fetch-output {
+    width: 35%;
+    display: flex;
+    border: 1px solid lightgray;
+    height: 450px;
+    text-align: center;
+    justify-content: space-around;
+    align-items: center;
+    overflow: auto;
+    flex-direction: column;
+}
+
+.fetch-output {
+    position: relative;
+    display: block;
+    padding: 8px 0;
+}
+
+.fetch-output .user__container{
+    margin: 0 auto;
+    min-height: 100px;
+}
+
+.fetch-output .user__container:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.user__container {
+    display: flex;
+    width: 95%;
+    background-color: rgb(230, 230, 230);
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    min-height: 35px;
+    align-self: center;
+    font-size: 1.4em;
+}
+
+.user__buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    width: 93%;
+}
+
+.edit_button, 
+.delete_button, 
+.input__block button {
+    height: 20px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    color: #fff;
+    width: 100px;
+    margin: 0 10px;
+    font-weight: 700;
+}
+
+.edit_button {
+    background-color: #c7b01a;
+}
+
+.delete_button {
+    background-color: #b81f1f;
+}
+
+.input__block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.input__block > button {
+    background-color: #248411;
+}
+
+.input__block > input{
+    height: 25px;
+    margin: auto 0;
+    padding: 5px;
+}
+
+.loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.hidden {
+    display: none;
+}
+
+

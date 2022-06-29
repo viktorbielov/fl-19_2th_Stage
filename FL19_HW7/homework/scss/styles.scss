@@ -1,0 +1,76 @@
+@import "vars";
+
+
+body{
+    background-color: $bg;
+}
+
+.title {
+    @extend %font-properies;
+    text-align: center;
+    color: $title;
+}
+
+.rules {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    ul{
+        @extend %rules-list;
+    }
+    &__title {
+        font-size: 20px;
+    }
+}
+
+.start-btn {
+    display: block;
+    margin: 0 auto;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+   .sign {
+       display: flex;
+        justify-content: center;
+        margin: 0 20px;
+        border-color: white;
+        border-radius: 10px;
+        cursor: pointer;
+        align-items: center;
+        background-image: linear-gradient(white, #bfacf7);
+        img {
+            width: 90px;
+            width: 90px;
+        }
+   }
+}
+
+.outputLogs {
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 10px;
+    height: 175px;
+    overflow: auto;
+    width: 350px;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+
+.reset {
+    color: black;
+    font-size: 1.4em;
+    font-weight: bold;
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.hidden {
+    display: none;
+}
